@@ -183,7 +183,7 @@ TEST(ExecutorTest, should_return_correct_heading_after_multiple_turns)
     // when
     executor->Execute("LLRR");
     // then
-    const Pose target({0, 0, 'N'});  // 两次左转后为'S'，然后右转回'N'
+    const Pose target({0, 0, 'N'});
     ASSERT_EQ(target, executor->Query());
 }
 
