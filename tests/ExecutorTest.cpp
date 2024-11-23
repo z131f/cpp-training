@@ -165,4 +165,26 @@ TEST(ExecutorTest, should_return_N_and_unchanged_position_given_command_is_R_and
     ASSERT_EQ(target, executor->Query());
 }
 
+TEST(ExecutorTest, should_return_correct_pose_given_batch_of_commands)
+{
+    // given
+    std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'N'}));
+    // when
+    executor->Execute("MMLMRM");
+    // then
+    const Pose target({-1, 3, 'N'});
+    ASSERT_EQ(target, executor->Query());
+}
+
+TEST(ExecutorTest, should_return_correct_heading_after_multiple_turns)
+{
+    // given
+    std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'N'}));
+    // when
+    executor->Execute("LLRR");
+    // then
+    const Pose target({0, 0, 'N'});  // 两次左转后为'S'，然后右转回'N'
+    ASSERT_EQ(target, executor->Query());
+}
+
 }  // namespace adas
