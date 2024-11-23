@@ -77,7 +77,7 @@ TEST(ExecutorTest, should_return_y_minus_1_given_command_is_M_and_facing_is_S)
     ASSERT_EQ(target, executor->Query());
 }
 
-TEST(ExecutorTest, should_return_N_given_command_is_L_and_facing_is_E)
+TEST(ExecutorTest, should_return_N_and_unchanged_position_given_command_is_L_and_facing_is_E)
 {
     // given
     std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'E'}));
@@ -88,7 +88,7 @@ TEST(ExecutorTest, should_return_N_given_command_is_L_and_facing_is_E)
     ASSERT_EQ(target, executor->Query());
 }
 
-TEST(ExecutorTest, should_return_S_given_command_is_L_and_facing_is_W)
+TEST(ExecutorTest, should_return_S_and_unchanged_position_given_command_is_L_and_facing_is_W)
 {
     // given
     std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'W'}));
@@ -99,7 +99,7 @@ TEST(ExecutorTest, should_return_S_given_command_is_L_and_facing_is_W)
     ASSERT_EQ(target, executor->Query());
 }
 
-TEST(ExecutorTest, should_return_W_given_command_is_L_and_facing_is_N)
+TEST(ExecutorTest, should_return_W_and_unchanged_position_given_command_is_L_and_facing_is_N)
 {
     // given
     std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'N'}));
@@ -110,7 +110,7 @@ TEST(ExecutorTest, should_return_W_given_command_is_L_and_facing_is_N)
     ASSERT_EQ(target, executor->Query());
 }
 
-TEST(ExecutorTest, should_return_E_given_command_is_L_and_facing_is_S)
+TEST(ExecutorTest, should_return_E_and_unchanged_position_given_command_is_L_and_facing_is_S)
 {
     // given
     std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'S'}));
@@ -121,7 +121,7 @@ TEST(ExecutorTest, should_return_E_given_command_is_L_and_facing_is_S)
     ASSERT_EQ(target, executor->Query());
 }
 
-TEST(ExecutorTest, should_return_E_given_command_is_R_and_facing_is_N)
+TEST(ExecutorTest, should_return_E_and_unchanged_position_given_command_is_R_and_facing_is_N)
 {
     // given
     std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'N'}));
@@ -132,7 +132,7 @@ TEST(ExecutorTest, should_return_E_given_command_is_R_and_facing_is_N)
     ASSERT_EQ(target, executor->Query());
 }
 
-TEST(ExecutorTest, should_return_W_given_command_is_R_and_facing_is_S)
+TEST(ExecutorTest, should_return_W_and_unchanged_position_given_command_is_R_and_facing_is_S)
 {
     // given
     std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'S'}));
@@ -143,7 +143,7 @@ TEST(ExecutorTest, should_return_W_given_command_is_R_and_facing_is_S)
     ASSERT_EQ(target, executor->Query());
 }
 
-TEST(ExecutorTest, should_return_S_given_command_is_R_and_facing_is_E)
+TEST(ExecutorTest, should_return_S_and_unchanged_position_given_command_is_R_and_facing_is_E)
 {
     // given
     std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'E'}));
@@ -154,7 +154,7 @@ TEST(ExecutorTest, should_return_S_given_command_is_R_and_facing_is_E)
     ASSERT_EQ(target, executor->Query());
 }
 
-TEST(ExecutorTest, should_return_N_given_command_is_R_and_facing_is_W)
+TEST(ExecutorTest, should_return_N_and_unchanged_position_given_command_is_R_and_facing_is_W)
 {
     // given
     std::unique_ptr<Executor> executor(Executor::NewExecutor({0, 0, 'W'}));
