@@ -13,37 +13,32 @@ ExecutorImpl::ExecutorImpl(const Pose& pose) noexcept : pose(pose)
 
 void ExecutorImpl::Execute(const std::string& commands) noexcept
 {
+    const std::unordered_map<char, int> direction_map = {
+        {'N', 0},
+        {'E', 1},
+        {'S', 2},
+        {'W', 3}
+    };
+
+    const std::unordered_map<int, char> reverse_direction_map = {
+        {0, 'N'},
+        {1, 'E'},
+        {2, 'S'},
+        {3, 'W'}
+    };
+
     for (const auto cmd : commands) {
         if (cmd == 'M') {
-            if (pose.heading == 'E') {
-                ++pose.x;
-            } else if (pose.heading == 'W') {
-                --pose.x;
-            } else if (pose.heading == 'N') {
-                ++pose.y;
-            } else if (pose.heading == 'S') {
-                --pose.y;
+            switch (pose.heading) {
+                case 'N': ++pose.y; break;
+                case 'E': ++pose.x; break;
+                case 'S': --pose.y; break;
+                case 'W': --pose.x; break;
             }
         } else if (cmd == 'L') {
-            if (pose.heading == 'N') {
-                pose.heading = 'W';
-            } else if (pose.heading == 'W') {
-                pose.heading = 'S';
-            } else if (pose.heading == 'S') {
-                pose.heading = 'E';
-            } else if (pose.heading == 'E') {
-                pose.heading = 'N';
-            }
+            pose.heading = reverse_direction_map.at((direction_map.at(pose.heading) + 3) % 4);  // Turn left
         } else if (cmd == 'R') {
-            if (pose.heading == 'N') {
-                pose.heading = 'E';
-            } else if (pose.heading == 'E') {
-                pose.heading = 'S';
-            } else if (pose.heading == 'S') {
-                pose.heading = 'W';
-            } else if (pose.heading == 'W') {
-                pose.heading = 'N';
-            }
+            pose.heading = reverse_direction_map.at((direction_map.at(pose.heading) + 1) % 4);  // Turn right
         }
     }
 }

@@ -1,5 +1,6 @@
 #pragma once
 #include <string>
+#include <unordered_map>
 namespace adas
 {
 struct Pose {
@@ -10,7 +11,6 @@ struct Pose {
 class Executor
 {
 public:
-    // Caller should delete *executor when it is no longer needed.
     static Executor* NewExecutor(const Pose& pose = {0, 0, 'N'}) noexcept;
 
 public:
