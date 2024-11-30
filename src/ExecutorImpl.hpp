@@ -17,10 +17,16 @@ public:
 
 private:
     Pose pose;
+    class ICommand
+    {
+    public:
+        virtual ~ICommand() = default;
+        virtual void DoOperate(ExecutorImpl& executor) const noexcept = 0;
+    };
     void Move(void) noexcept;
     void TurnLeft(void) noexcept;
     void TurnRight(void) noexcept;
-    class MoveCommand final
+    class MoveCommand final : public ICommand
     {
     public:
         void DoOperate(ExecutorImpl& executor) const noexcept
@@ -28,7 +34,7 @@ private:
             executor.Move();
         }
     };
-    class TurnLeftCommand final
+    class TurnLeftCommand final : public ICommand
     {
     public:
         void DoOperate(ExecutorImpl& executor) const noexcept
@@ -36,7 +42,7 @@ private:
             executor.TurnLeft();
         }
     };
-    class TurnRightCommand final
+    class TurnRightCommand final : public ICommand
     {
     public:
         void DoOperate(ExecutorImpl& executor) const noexcept
