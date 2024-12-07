@@ -2,40 +2,22 @@
 namespace adas
 {
 
-const std::unordered_map<char, int> direction_map = {{'N', 0}, {'E', 1}, {'S', 2}, {'W', 3}};
-const std::unordered_map<int, char> reverse_direction_map = {{0, 'N'}, {1, 'E'}, {2, 'S'}, {3, 'W'}};
-
-PoseHandler::PoseHandler(const Pose& pose) noexcept : point{pose.x, pose.y}, direction{direction_map.at(pose.heading)}
+PoseHandler::PoseHandler(const Pose& pose) noexcept
+    : point(pose.x, pose.y), facing(&Direction::GetDirection(pose.heading))
 {
 }
+
 void PoseHandler::Move() noexcept
 {
-    Point add_point;
-    switch (direction) {
-    case 0:
-        add_point = Point{0, 1};
-        break;
-    case 1:
-        add_point = Point{1, 0};
-        break;
-    case 2:
-        add_point = Point{0, -1};
-        break;
-    case 3:
-        add_point = Point{-1, 0};
-        break;
-    }
-    point += add_point;
+    point += facing->Move();
 }
-
 void PoseHandler::TurnLeft() noexcept
 {
-    direction = (direction + 3) % 4;  // Turn left
+    facing = &(facing->LeftOne());
 }
-
 void PoseHandler::TurnRight() noexcept
 {
-    direction = (direction + 1) % 4;  // Turn right
+    facing = &(facing->RightOne());
 }
 
 void PoseHandler::Fast() noexcept
@@ -50,6 +32,6 @@ bool PoseHandler::IsFast() const noexcept
 
 Pose PoseHandler::Query() const noexcept
 {
-    return Pose{point.GetX(), point.GetY(), reverse_direction_map.at(direction)};
+    return Pose{point.GetX(), point.GetY(), facing->GetHeading()};
 }
 }  // namespace adas

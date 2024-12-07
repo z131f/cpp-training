@@ -1,4 +1,5 @@
 #pragma once
+#include "Direction.hpp"
 #include "Executor.hpp"
 #include "Point.hpp"
 
@@ -21,7 +22,7 @@ public:
 
 private:
     Point point;
-    int direction{0};
+    const Direction* facing;
     bool fast{false};
 };
 }  // namespace adas

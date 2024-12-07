@@ -1,3 +1,4 @@
+#pragma once
 namespace adas
 {
 class Point final
