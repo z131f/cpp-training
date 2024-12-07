@@ -13,9 +13,17 @@ public:
     void operator()(PoseHandler& poseHandler) const noexcept
     {
         if (poseHandler.IsFast()) {
-            poseHandler.Move();
+            if (poseHandler.IsReversed()) {
+                poseHandler.Backward();
+            } else {
+                poseHandler.Forward();
+            }
         }
-        poseHandler.Move();
+        if (poseHandler.IsReversed()) {
+            poseHandler.Backward();
+        } else {
+            poseHandler.Forward();
+        }
     }
 };
 
@@ -25,9 +33,17 @@ public:
     void operator()(PoseHandler& poseHandler) const noexcept
     {
         if (poseHandler.IsFast()) {
-            poseHandler.Move();
+            if (poseHandler.IsReversed()) {
+                poseHandler.Backward();
+            } else {
+                poseHandler.Forward();
+            }
         }
-        poseHandler.TurnLeft();
+        if (poseHandler.IsReversed()) {
+            poseHandler.TurnRight();
+        } else {
+            poseHandler.TurnLeft();
+        }
     }
 };
 
@@ -37,9 +53,17 @@ public:
     void operator()(PoseHandler& poseHandler) const noexcept
     {
         if (poseHandler.IsFast()) {
-            poseHandler.Move();
+            if (poseHandler.IsReversed()) {
+                poseHandler.Backward();
+            } else {
+                poseHandler.Forward();
+            }
         }
-        poseHandler.TurnRight();
+        if (poseHandler.IsReversed()) {
+            poseHandler.TurnLeft();
+        } else {
+            poseHandler.TurnRight();
+        }
     }
 };
 
@@ -49,6 +73,15 @@ public:
     void operator()(PoseHandler& poseHandler) const noexcept
     {
         poseHandler.Fast();
+    }
+};
+
+class ReverseCommand final
+{
+public:
+    void operator()(PoseHandler& poseHandler) const noexcept
+    {
+        poseHandler.Reverse();
     }
 };
 

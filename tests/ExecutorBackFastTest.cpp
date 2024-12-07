@@ -46,7 +46,7 @@ TEST(ExecutorBackFastTest, should_return_x_minus_2_given_command_is_BFM_and_faci
     // when
     executor->Execute("BFM");
     // then
-    const Pose target{-2, 0, 'N'};
+    const Pose target{-2, 0, 'E'};
     ASSERT_EQ(target, executor->Query());
 }
 
