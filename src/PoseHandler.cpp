@@ -35,7 +35,7 @@ void PoseHandler::Reverse() noexcept
 {
     reverse = !reverse;
 }
-bool PoseHandler::IsReversed() const noexcept
+bool PoseHandler::IsReverse() const noexcept
 {
     return reverse;
 }

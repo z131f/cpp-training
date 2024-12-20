@@ -20,7 +20,7 @@ public:
     void Fast(void) noexcept;
     bool IsFast(void) const noexcept;
     void Reverse(void) noexcept;
-    bool IsReversed(void) const noexcept;
+    bool IsReverse(void) const noexcept;
     Pose Query(void) const noexcept;
 
 private:
