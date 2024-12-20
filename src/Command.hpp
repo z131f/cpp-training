@@ -7,7 +7,7 @@
 namespace adas
 {
 
-class MoveCommand final
+class MoveCommandDefault final
 {
 public:
     ActionGroup operator()(PoseHandler& poseHandler) const noexcept
@@ -23,7 +23,7 @@ public:
     }
 };
 
-class TurnLeftCommand final
+class TurnLeftCommandDefault final
 {
 public:
     ActionGroup operator()(PoseHandler& poseHandler) const noexcept
@@ -40,7 +40,7 @@ public:
     }
 };
 
-class TurnRightCommand final
+class TurnRightCommandDefault final
 {
 public:
     ActionGroup operator()(PoseHandler& poseHandler) const noexcept
@@ -58,7 +58,7 @@ public:
     }
 };
 
-class FastCommand final
+class FastCommandDefault final
 {
 public:
     ActionGroup operator()(PoseHandler& poseHandler) const noexcept
@@ -70,7 +70,7 @@ public:
     }
 };
 
-class ReverseCommand final
+class ReverseCommandDefault final
 {
 public:
     ActionGroup operator()(PoseHandler& poseHandler) const noexcept
@@ -82,7 +82,7 @@ public:
     }
 };
 
-class TurnRoundCommand final
+class TurnRoundCommandDefault final
 {
 public:
     ActionGroup operator()(PoseHandler& poseHandler) const noexcept

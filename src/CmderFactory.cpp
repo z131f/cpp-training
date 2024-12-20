@@ -1,6 +1,21 @@
 #include "CmderFactory.hpp"
 namespace adas
 {
+
+CmderFactory::CmderFactory(const std::string vehicle) noexcept : cmderMap(BuildCmdMap(vehicle))
+{
+}
+
+std::unordered_map<char, Cmder> CmderFactory::BuildCmdMap(std::string vehicle) const noexcept
+{
+    const std::unordered_map<char, Cmder> cmderMap{
+        {'M', MoveCommandDefault()},      {'L', TurnLeftCommandDefault()}, {'R', TurnRightCommandDefault()},
+        {'Z', TurnRoundCommandDefault()}, {'B', ReverseCommandDefault()},  {'F', FastCommandDefault()},
+    };
+
+    return cmderMap;
+}
+
 CmderList CmderFactory::GetCmders(const std::string& commands) const noexcept
 {
     CmderList cmders;

@@ -20,9 +20,13 @@ ExecutorImpl::ExecutorImpl(const Pose& pose) noexcept : poseHandler(pose)
 {
 }
 
+ExecutorImpl::ExecutorImpl(const Pose& pose, std::string vehicle) noexcept : poseHandler(pose), vehicle(vehicle)
+{
+}
+
 void ExecutorImpl::Execute(const std::string& commands) noexcept
 {
-    const auto cmders = Singleton<CmderFactory>::Instance().GetCmders(commands);
+    const auto cmders = Singleton<CmderFactory>::Instance(this->vehicle).GetCmders(commands);
     std::for_each(cmders.begin(), cmders.end(),
                   [this](const Cmder& cmder) noexcept { cmder(poseHandler).DoOperate(poseHandler); });
 }

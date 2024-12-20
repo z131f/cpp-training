@@ -17,6 +17,7 @@ public:
     CmderFactory(void) noexcept = default;
     ~CmderFactory(void) noexcept = default;
     CmderFactory(const CmderFactory&) noexcept = delete;
+    CmderFactory(const std::string vehicle) noexcept;
     CmderFactory& operator=(const CmderFactory&) noexcept = delete;
 
 public:
@@ -27,9 +28,7 @@ private:
     void ReplaceAll(std::string& inout, std::string_view what, std::string_view with) const noexcept;
 
 private:
-    const std::unordered_map<char, Cmder> cmderMap{
-        {'M', MoveCommand()}, {'L', TurnLeftCommand()}, {'R', TurnRightCommand()},
-        {'F', FastCommand()}, {'B', ReverseCommand()},  {'Z', TurnRoundCommand()},
-    };
+    std::unordered_map<char, Cmder> BuildCmdMap(std::string vehicle) const noexcept;
+    const std::unordered_map<char, Cmder> cmderMap;
 };
 }  // namespace adas

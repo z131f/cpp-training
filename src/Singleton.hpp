@@ -11,6 +11,12 @@ public:
         return instance;
     }
 
+    static T& Instance(std::string vehicle) noexcept
+    {
+        static T instance(vehicle);
+        return instance;
+    }
+
     Singleton(const Singleton&) noexcept = delete;
     Singleton& operator=(const Singleton&) noexcept = delete;
 
